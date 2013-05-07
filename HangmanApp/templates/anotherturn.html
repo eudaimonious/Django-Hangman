@@ -1,0 +1,43 @@
+<!doctype html>
+<title>Hangman</title>
+<link rel="stylesheet" href="../static/style.css">
+<div class=page>
+    <div>
+        {% if guessIs == 'Invalid' or guessIs == 'Duplicate' %}
+        <h1> Invalid Guess </h1>
+        {% endif %}
+
+        <asciiart>
+            {{ art|linebreaks }}
+        </asciiart>
+
+        <h2>{{ puzzle }}</h2>
+
+        {% if guessIs == 'Invalid' %}
+        <h2> Please enter a single lowercase letter. </h2>
+        {% endif %}
+
+        {% if guessIs == 'Duplicate' %}
+        <h2> You already guessed that. </h2>
+        {% endif %}
+
+        <form action="{% url 'hangman:anotherturn' %}" method="post">
+            {% csrf_token %}
+            <p>
+                <label for="id_guess">Guess a letter: </label>
+                <input type="text" name="guess" id="id_guess"/>
+                <input type="submit" value="Go" />
+            </p>
+        </form>
+
+        <p>
+            You guessed: {{ guess }}
+            <br>
+            <br>
+            Your incorrect guesses are: {{ incorrect }}
+            <br>
+            <br>
+            The secret word is: {{ secret_word }}
+        </p>
+    </div>
+</div>

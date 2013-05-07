@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Hangman</title>
+<link rel="stylesheet" href="../static/style.css">
+<div class=page>
+  <h1>Let's Play Hangman</h1>
+  <div>
+    <asciiart>
+      {{ art|linebreaks }}
+    </asciiart>
+
+  <h2>{{ puzzle }}</h2>
+
+<form action="{% url 'hangman:anotherturn' %}" method="post">
+{% csrf_token %}
+    <p><label for="id_guess">Guess a letter: </label>
+        <input type="text" name="guess" id="id_guess"/>
+<input type="submit" value="Go" />
+</form>
+
+ <p>Your secret word is: {{ secret_word }}.
+    <br>
+    Shhh!
+    <br>
+  </p>
+
+  </div>
+</div>
+
+
+
+
+
