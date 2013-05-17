@@ -16,6 +16,8 @@ def index(request):
     picker = hangman.wordPicker()
     #Assign that word to a session variable
     request.session['secret_word'] = picker.getSecretWord()
+    #Format the secret word
+    request.session['pretty_secret_word'] = hangman.format(request.session['secret_word'], withSpaces=False)
     #Create the puzzle blanks that the user will see and fill in
     request.session['solved_so_far'] = hangman.createsolvedsofar(request.session['secret_word'])
     #Format the puzzle blanks
@@ -28,21 +30,22 @@ def index(request):
               'solved_so_far': request.session['solved_so_far'],
               'art': request.session['art'],
               'puzzle': request.session['puzzle'],
-            }
+              'pretty_secret_word': request.session['pretty_secret_word'],
+              }
     return render(request, 'index.html', context)
 
 def anotherturn(request):
     #Convert player's guess from unicode and store
     request.session['guess'] = request.POST['guess'].encode('utf8')
-    #Add variables a dict so we can pass these to the template
+    #Add variables to a dict so we can pass these to the template
     context = {
           'secret_word': request.session['secret_word'],
+          'pretty_secret_word': request.session['pretty_secret_word'],
           'solved_so_far': request.session['solved_so_far'],
           'guess': request.session['guess'],
           'bad_guesses': request.session['bad_guesses'],
           'art': request.session['art'],
           'puzzle': request.session['puzzle'],
-          'incorrect': request.session['incorrect']
         }
     #Check validity of player's guess
     guessIs = hangman.validguesstest(request.session['guess'], request.session['bad_guesses'], request.session['solved_so_far'])
@@ -50,7 +53,7 @@ def anotherturn(request):
     if guessIs != "Valid":
     #Have player try again
           context['guessIs'] = guessIs
-          return render(request, 'hangman/anotherturn.html', context)
+          return render(request, 'anotherturn.html', context)
     #Check if guess in secret word. If not, add to list of bad guesses.
     request.session['bad_guesses'] = hangman.incorrectguesses(request.session['secret_word'], request.session['guess'], request.session['bad_guesses'])
     #Format the incorrect guesses

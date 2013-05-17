@@ -1,6 +1,9 @@
 <!doctype html>
+<head>
 <title>Hangman</title>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 <div class=page>
     <div>
         {% if guessIs == 'Invalid' or guessIs == 'Duplicate' %}
@@ -37,7 +40,11 @@
             Your incorrect guesses are: {{ incorrect }}
             <br>
             <br>
-            The secret word is: {{ secret_word }}
+            The secret word is: {{ pretty_secret_word }}
         </p>
+          <p>
+    Game by Margaret Scott. Art adapted from http://ascii.co.uk/art/hangman
+  </p>
     </div>
 </div>
+</body>

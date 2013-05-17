@@ -66,8 +66,10 @@ def solve(solvedsofar, guess, letterpositions):
     solvedsofar[index] = guess
   return solvedsofar
 
-def format(uglylist):
+def format(uglylist, withSpaces=True):
   '''Convert puzzle into a string for web display'''
+  if not withSpaces:
+    return ''.join(map(str,uglylist))
   return ' '.join(map(str,uglylist))
 
 def result(secret_word, solvedsofar, bad_guesses):

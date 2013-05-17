@@ -1,6 +1,6 @@
 <!doctype html>
 <title>Hangman</title>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/static/style.css">
 <div class=page>
   <div>
     <asciiart>
@@ -16,9 +16,11 @@
 
 {% if result == 'lose' %}
 
-  <h2> You lost! The secret word was {{ secret_word }}</h2>
+  <h2> You lost! The secret word was {{ pretty_secret_word }}</h2>
 
 {% endif %}
-
+  <p>
+    Game by Margaret Scott. Art adapted from http://ascii.co.uk/art/hangman
+  </p>
   </div>
 </div>

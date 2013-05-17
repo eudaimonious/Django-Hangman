@@ -1,6 +1,9 @@
 <!doctype html>
+<head>
 <title>Hangman</title>
-<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 <div class=page>
   <h1>Let's Play Hangman</h1>
   <div>
@@ -17,14 +20,17 @@
 <input type="submit" value="Go" />
 </form>
 
- <p>Your secret word is: {{ secret_word }}.
+  <p>Your secret word is: {{ pretty_secret_word }}.
     <br>
     Shhh!
     <br>
   </p>
-
+  <p>
+    Game by Margaret Scott. Art adapted from http://ascii.co.uk/art/hangman
+  </p>
   </div>
 </div>
+</body>
 
 
 
