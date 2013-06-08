@@ -4,25 +4,25 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body OnLoad="document.myform.guess.focus();">
-<div class=page>
-  <h1>Let's Play Hangman</h1>
-  <div>
-    <asciiart>
-      {{ art|linebreaks }}
-    </asciiart>
+<div class="container">
+  <div class="center hero-unit">
+    <h1>Let's Play Hangman</h1>
 
-  <h2>{{ puzzle }}</h2>
+    <asciiart>{{art|linebreaks}}</asciiart>
+
+    <h2>{{ puzzle }}</h2>
 
 	<form action="{% url 'hangman:anotherturn' %}" method="post" name="myform">
 	{% csrf_token %}
     	<p>
     	<label for="id_guess">Guess a letter: </label>
-        <input type="text" name="guess" id="id_guess"/>
-		<input type="submit" value="Go" />
+        <input type="text" name="guess" id="id_guess" size="1" maxlength="1"/>
+		<input type="submit" value="Go" class="btn-primary"/>
 		</p>
 	</form>
 
-  </div>
+  
+</div>
 </div>
 </body>
 

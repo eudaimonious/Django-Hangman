@@ -1,23 +1,19 @@
 <!doctype html>
 <title>Hangman</title>
 <link rel="stylesheet" href="/static/style.css">
-<div class=page>
-  <div>
-    <asciiart>
-      {{ art|linebreaks }}
-    </asciiart>
+<div class="container">
+  <div class="center hero-unit">
+    <div class="gameart">
+      <asciiart>{{art|linebreaks}}</asciiart>
+    </div>
     <h2>{{ puzzle }}</h2>
 
 {% if result == 'win' %}
-
   <h2> Congratulations. You win! </h2>
-
 {% endif %}
 
 {% if result == 'lose' %}
-
-  <h2> You lost! The secret word was {{ pretty_secret_word }}</h2>
-
+  <h2> You lost! The secret word was {{ pretty_secret_word }}.</h2>
 {% endif %}
   <p>
     Game by Margaret Scott

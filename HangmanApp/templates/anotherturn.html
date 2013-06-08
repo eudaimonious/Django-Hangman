@@ -4,16 +4,14 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body OnLoad="document.myform.guess.focus();">
-<div class=page>
-    <div>
+<div class="container">
+    <div class="center hero-unit">
         {% if guessIs == 'Invalid' or guessIs == 'Duplicate' %}
         <h1> Invalid Guess </h1>
         {% endif %}
-
-        <asciiart>
-            {{ art|linebreaks }}
-        </asciiart>
-
+            <div class="gameart">
+                <asciiart>{{art|linebreaks}}</asciiart>
+            </div>
         <h2>{{ puzzle }}</h2>
 
         {% if guessIs == 'Invalid' %}
@@ -28,8 +26,8 @@
             {% csrf_token %}
             <p>
                 <label for="id_guess">Guess a letter: </label>
-                <input type="text" name="guess" id="id_guess"/>
-                <input type="submit" value="Go" />
+                <input type="text" name="guess" id="id_guess" size="1" maxlength="1"/>
+                <input type="submit" value="Go" class="btn-primary" />
             </p>
         </form>
 
