@@ -3,7 +3,7 @@
 <title>Hangman</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body OnLoad="document.myform.guess.focus();">
 <div class=page>
     <div>
         {% if guessIs == 'Invalid' or guessIs == 'Duplicate' %}
@@ -24,7 +24,7 @@
         <h2> You already guessed that. </h2>
         {% endif %}
 
-        <form action="{% url 'hangman:anotherturn' %}" method="post">
+        <form action="{% url 'hangman:anotherturn' %}" method="post" name="myform">
             {% csrf_token %}
             <p>
                 <label for="id_guess">Guess a letter: </label>

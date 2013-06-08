@@ -3,7 +3,7 @@
 <title>Hangman</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body OnLoad="document.myform.guess.focus();">
 <div class=page>
   <h1>Let's Play Hangman</h1>
   <div>
@@ -13,13 +13,14 @@
 
   <h2>{{ puzzle }}</h2>
 
-<form action="{% url 'hangman:anotherturn' %}" method="post">
-{% csrf_token %}
-    <p><label for="id_guess">Guess a letter: </label>
+	<form action="{% url 'hangman:anotherturn' %}" method="post" name="myform">
+	{% csrf_token %}
+    	<p>
+    	<label for="id_guess">Guess a letter: </label>
         <input type="text" name="guess" id="id_guess"/>
-<input type="submit" value="Go" />
-</form>
-
+		<input type="submit" value="Go" />
+		</p>
+	</form>
 
   </div>
 </div>
